@@ -8,6 +8,7 @@ import db_config as db
 
 app = create_app()
 
+token = "as54s6qwd65w4ef6we"
 
 @app.route('/', methods=['GET'])
 def show_all_characters():
@@ -30,7 +31,7 @@ def show_a_character(id):
         return jsonify({"character":character})
 
 
-@app.route('/api/new_character/', methods=['POST']) #recibe dos parametros, uno es la ruta a la que queremos acceder y el otro es el metodo con el que trabajaremos  
+@app.route(f'/api/<int:{token}>/new_character/', methods=['POST']) #recibe dos parametros, uno es la ruta a la que queremos acceder y el otro es el metodo con el que trabajaremos  
 def add_new_character():
     if len(request.json) == 6:
         db.db.mr_robot_characters.insert_one({
@@ -51,7 +52,7 @@ def add_new_character():
             "message":f"{request.json['name']} was added",
         })
 
-@app.route('/api/character/update/<int:id>/', methods=['PUT'])
+@app.route(f'/api/<int:{token}>/character/update/<int:id>/', methods=['PUT'])
 def update_character(id):
 
     if db.db.mr_robot_characters.find_one({"id":id}):
@@ -77,7 +78,7 @@ def update_character(id):
                 "message":f"The character it's been succesfully updated"
             })
 
-@app.route('/api/character/delete/<int:id>/', methods=['DELETE'])
+@app.route(f'/api/<int:{token}>/character/delete/<int:id>/', methods=['DELETE'])
 def del_character(id):
     if db.db.mr_robot_characters.find_one({"id":id}):
         db.db.mr_robot_characters.delete_one({"id":id})
