@@ -8,7 +8,7 @@ import db_config as db
 
 app = create_app()
 
-token = "as54s6qwd65w4ef6we"
+token = 6516847846548746151
 
 @app.route('/', methods=['GET'])
 def show_all_characters():
