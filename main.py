@@ -4,12 +4,10 @@ from app import create_app
 from bson.json_util import dumps
 from functools import wraps 
 import db_config as db 
-from flask_cors import CORS
 
 #kaka 
 
 app = create_app()
-CORS(app)
 token = 15951855193373519
 
 @app.route('/', methods=['GET'])
