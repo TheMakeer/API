@@ -10,13 +10,24 @@ app = create_app()
 
 token = 6516847846548746151
 
-@app.route('/', methods=['GET'])
+@app.route('/all_characters/', methods=['GET'])
 def show_all_characters():
     characters = list(db.db.mr_robot_characters.find())
     for character in characters:
         del character ["_id"]
 
-    return jsonify({"characters":characters}) 
+    return jsonify({"characters":characters})
+
+@app.route('/', methods=['GET'])
+def end_points():
+    return jsonify({
+        "end_point0":"/all_characters/"
+        "end_point1":"/api/character/<int:id>/",
+        "end_point2":"/api/token/new_character/",
+        "end_point3":"/api/token/character/update/<int:id>/",
+        "end_point4":"/api/token/character/delete/<int:id>/"
+
+        }) 
 
 @app.route('/api/character/<int:id>/', methods=['GET'])
 def show_a_character(id):
