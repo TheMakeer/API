@@ -1,8 +1,7 @@
-from flask import jsonify, request, Response
+from flask import jsonify, request
 from flask_pymongo import pymongo 
 from app import create_app
 from bson.json_util import dumps
-from functools import wraps 
 import db_config as db 
 
 #kaka 
