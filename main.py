@@ -21,7 +21,7 @@ def show_all_characters():
 @app.route('/', methods=['GET'])
 def end_points():
     return jsonify({
-        "end_point0":"/all_characters/"
+        "end_point0":"/all_characters/",
         "end_point1":"/api/character/<int:id>/",
         "end_point2":"/api/token/new_character/",
         "end_point3":"/api/token/character/update/<int:id>/",
