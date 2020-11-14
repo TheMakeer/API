@@ -10,12 +10,14 @@ app = create_app()
 
 
 @app.route('/', methods=['GET'])
-def show_all_characters():
+def test():
+    return jsonify({"test":"testing api"})
+""" def show_all_characters():
     characters = list(db.db.mr_robot_characters.find())
     for character in characters:
         del character ["_id"]
 
-    return jsonify({"characters":characters}) 
+    return jsonify({"characters":characters})  """
 
 @app.route('/api/character/<int:id>/', methods=['GET'])
 def show_a_character(id):
